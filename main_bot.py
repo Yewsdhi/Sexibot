@@ -13,21 +13,24 @@ from src.bot.post_upload_conversation import post_upload_conversation
 from src.common.settings.env import DEBUG, TOKEN
 
 if not TOKEN:
-    raise Exception(
-        "Cant find bot token in env variables try to to specify it in .env file"
+    raise RuntimeError(
+        "Bot token is missing. Set the TOKEN environment variable in your .env file."
     )
+
 updater = Updater(token=TOKEN)
 
 LOG_FILE_NAME = "auction_bot.log"
-format = "%(asctime)s [%(levelname)s]: %(message)s"
-logger = logging.basicConfig(
+log_format = "%(asctime)s [%(levelname)s]: %(message)s"
+
+logging.basicConfig(
     filename=LOG_FILE_NAME if not DEBUG else None,
-    format=format,
+    format=log_format,
     encoding="utf-8",
     level=logging.INFO,
 )
+
 if not DEBUG:
-    logging.getLogger(logger).addHandler(logging.StreamHandler())
+    logging.getLogger().addHandler(logging.StreamHandler())
 
 
 dispatcher = updater.dispatcher
@@ -48,7 +51,6 @@ dispatcher.add_handler(CommandHandler("docs", bot_commands.get_docs))
 
 # new commands
 dispatcher.add_handler(CommandHandler("post_from_id", bot_commands.post_from_id))
-
 
 # dispatcher.add_handler(MessageHandler(Filters.is_automatic_forward, messageHandler))
 dispatcher.add_handler(CallbackQueryHandler(bot_handlers.queryHandler))

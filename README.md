@@ -2,17 +2,29 @@
 
 Telegram bot that provides auction features via telegram interface
 
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Yewsdhi/Sexibot)
+
 ## .env content
 
 - `TOKEN` - telegram bot api key
-- `API_ENDPOINT` - api addres (optional if running in docker)
+- `API_ENDPOINT` - api address (optional if running in docker)
 - `PORT` - api port (optional, 8001 by default)
-- `ADMIN_CHAT_ID` - telegram chad id to create posts
+- `ADMIN_CHAT_ID` - telegram chat id to create posts
 - `MAIN_CHANNEL_ID` - telegram chat id to send posts
 
 ## Run w/ Docker
 
 1. `cd` to project folder
-1. create `.env` file
-1. dowload or restore databse as `./data_base/sql_app.db`
-1. `docker-compose up -d --build`
+2. create `.env` file
+3. download or restore database as `./data_base/sql_app.db`
+4. `docker-compose up -d --build`
+
+## Heroku Deploy
+
+1. Click the deploy button above
+2. Set required environment variables:
+   - `TOKEN`
+   - `ADMIN_CHAT_ID`
+   - `MAIN_CHANNEL_ID`
+   - `DEBUG` (optional, default `False`)
+3. Deploy the app

@@ -35,10 +35,18 @@
     "WEB_URL": {
       "description": "Optional public HTTPS URL of this Heroku app, e.g. https://my-app.herokuapp.com",
       "required": false
+    },
+    "DATABASE_URL": {
+      "description": "Optional Postgres connection string. SQLite is used by default for local/dev.",
+      "required": false
     }
   },
   "formation": {
     "web": {
+      "quantity": 1,
+      "size": "basic"
+    },
+    "worker": {
       "quantity": 1,
       "size": "basic"
     }

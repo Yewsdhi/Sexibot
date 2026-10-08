@@ -1,6 +1,6 @@
 # telegram_auction_bot
 
-Telegram bot that provides auction features via telegram interface
+Telegram bot that provides auction features via telegram interface.
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Yewsdhi/Sexibot)
 
@@ -11,6 +11,8 @@ Telegram bot that provides auction features via telegram interface
 - `PORT` - api port (optional, 8001 by default)
 - `ADMIN_CHAT_ID` - telegram chat id to create posts
 - `MAIN_CHANNEL_ID` - telegram chat id to send posts
+- `DEBUG` - optional, default `False`
+- `DATABASE_URL` - optional Postgres URL; SQLite is used by default for local runs
 
 ## Run w/ Docker
 
@@ -28,3 +30,11 @@ Telegram bot that provides auction features via telegram interface
    - `MAIN_CHANNEL_ID`
    - `DEBUG` (optional, default `False`)
 3. Deploy the app
+4. Ensure both dynos are running: `web` and `worker`
+
+The Heroku `Procfile` starts both the FastAPI API and the Telegram bot polling worker:
+
+```procfile
+web: gunicorn main_api:app -k uvicorn.workers.UvicornWorker
+worker: python main_bot.py
+```

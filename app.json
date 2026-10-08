@@ -1,7 +1,7 @@
 {
   "name": "Telegram Auction Bot",
   "description": "Telegram auction bot with FastAPI backend",
-  "repository": "https://github.com/Yewsdhi/telegram_auction_sexi",
+  "repository": "https://github.com/Yewsdhi/Sexibot",
   "keywords": [
     "telegram",
     "bot",

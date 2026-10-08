@@ -1,0 +1,46 @@
+{
+  "name": "Telegram Auction Bot",
+  "description": "Telegram auction bot with FastAPI backend",
+  "repository": "https://github.com/Yewsdhi/Sexibot",
+  "keywords": [
+    "telegram",
+    "bot",
+    "auction",
+    "python",
+    "fastapi"
+  ],
+  "stack": "heroku-24",
+  "env": {
+    "TOKEN": {
+      "description": "Telegram Bot API token from @BotFather",
+      "required": true
+    },
+    "ADMIN_CHAT_ID": {
+      "description": "Telegram chat ID allowed to create auction posts",
+      "required": true
+    },
+    "MAIN_CHANNEL_ID": {
+      "description": "Telegram channel ID where auction posts are published",
+      "required": true
+    },
+    "DEBUG": {
+      "description": "Enable debug logging",
+      "value": "False",
+      "required": false
+    },
+    "API_ENDPOINT": {
+      "description": "Optional public API URL; leave blank to use the current Heroku app URL",
+      "required": false
+    },
+    "WEB_URL": {
+      "description": "Optional public HTTPS URL of this Heroku app, e.g. https://my-app.herokuapp.com",
+      "required": false
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "basic"
+    }
+  }
+}

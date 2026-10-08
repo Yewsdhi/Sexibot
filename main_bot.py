@@ -6,7 +6,7 @@ from telegram.ext import (
     Updater,
 )
 
-from src.bot import bot_commands, bot_handlers
+from src.bot import bot_commands, bot_handlers, auction_game
 from src.bot.conversation_handlers import conv_handler
 from src.bot.err_handler import error_handler
 from src.bot.post_upload_conversation import post_upload_conversation
@@ -34,6 +34,14 @@ dispatcher = updater.dispatcher
 
 # old commands
 dispatcher.add_handler(CommandHandler("start", bot_commands.startCommand))
+dispatcher.add_handler(CommandHandler("auction", auction_game.auction_start))
+dispatcher.add_handler(CommandHandler("addactress", auction_game.add_actress))
+dispatcher.add_handler(CommandHandler("bid", auction_game.bid))
+dispatcher.add_handler(CommandHandler("balance", auction_game.balance))
+dispatcher.add_handler(CommandHandler("team", auction_game.team))
+dispatcher.add_handler(CommandHandler("leaderboard", auction_game.leaderboard))
+dispatcher.add_handler(CommandHandler("endauction", auction_game.end_auction))
+dispatcher.add_handler(CommandHandler("givecoins", auction_game.give_coins))
 dispatcher.add_handler(CommandHandler("help", bot_commands.helpCommand))
 dispatcher.add_handler(CommandHandler("get_image", bot_commands.get_image_Command))
 dispatcher.add_handler(CommandHandler("docs", bot_commands.get_docs))
